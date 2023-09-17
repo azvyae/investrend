@@ -31,7 +31,7 @@ function Calculator({
       totalNormal += inv;
       total += total * retPerMonth;
     }
-    if (mo && init && inv && retPerMonth) {
+    if (mo > 0 && init >= 0 && inv >= 0 && !Number.isNaN(retPerMonth)) {
       setResult({
         months: mo,
         assets: totalNormal,
