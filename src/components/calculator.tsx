@@ -98,7 +98,7 @@ function Calculator({
         value={returnPerYear}
         inputMode="numeric"
         onChange={(e) => {
-          setReturnPerYear(e.target.value);
+          if (Number(e.target.value) <= 100) setReturnPerYear(e.target.value);
         }}
         name="returnPerYear"
         id="returnPerYear"
