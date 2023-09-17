@@ -55,9 +55,13 @@ function Calculator({
         value={months}
         inputMode="numeric"
         onChange={(e) => {
-          Number(e.target.value) < 1
-            ? setMonths("1")
-            : setMonths(e.target.value);
+          const num = Number(e.target.value.replaceAll(thousandsSeparator, ""));
+          if (!Number.isNaN(num)) {
+            if (Number(e.target.value) < 1) {
+              return setMonths("1");
+            }
+            return setMonths(num.toLocaleString());
+          }
         }}
         id="months"
       />
