@@ -53,6 +53,7 @@ function Calculator({
         min={1}
         name="months"
         value={months}
+        inputMode="numeric"
         onChange={(e) => {
           Number(e.target.value) < 1
             ? setMonths("1")
@@ -65,6 +66,7 @@ function Calculator({
         className="border px-2 py-1 rounded"
         type="text"
         name="initial"
+        inputMode="numeric"
         onChange={(e) => {
           const num = Number(e.target.value.replaceAll(thousandsSeparator, ""));
           if (!Number.isNaN(num)) {
@@ -80,6 +82,7 @@ function Calculator({
         type="text"
         name="investment"
         value={investment}
+        inputMode="numeric"
         onChange={(e) => {
           const num = Number(e.target.value.replaceAll(thousandsSeparator, ""));
           if (!Number.isNaN(num)) {
@@ -93,6 +96,7 @@ function Calculator({
         className="border px-2 py-1 rounded"
         type="number"
         value={returnPerYear}
+        inputMode="numeric"
         onChange={(e) => {
           setReturnPerYear(e.target.value);
         }}
