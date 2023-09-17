@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { getThousandsSeparator } from "../helper";
+
+const thousandsSeparator = getThousandsSeparator();
 
 function Calculator({
   setResult,
@@ -20,8 +23,8 @@ function Calculator({
   useEffect(() => {
     const [mo, init, inv, retPerMonth] = [
       Number(months),
-      Number(initial.replace(/,/g, "")),
-      Number(investment.replace(/,/g, "")),
+      Number(initial.replaceAll(thousandsSeparator, "")),
+      Number(investment.replaceAll(thousandsSeparator, "")),
       Number(returnPerYear) / 100 / 12,
     ];
     let total = init;
@@ -63,7 +66,7 @@ function Calculator({
         type="text"
         name="initial"
         onChange={(e) => {
-          const num = Number(e.target.value.replace(/,/g, ""));
+          const num = Number(e.target.value.replaceAll(thousandsSeparator, ""));
           if (!Number.isNaN(num)) {
             setInitial(num.toLocaleString());
           }
@@ -78,7 +81,7 @@ function Calculator({
         name="investment"
         value={investment}
         onChange={(e) => {
-          const num = Number(e.target.value.replace(/,/g, ""));
+          const num = Number(e.target.value.replaceAll(thousandsSeparator, ""));
           if (!Number.isNaN(num)) {
             setInvestment(num.toLocaleString());
           }
