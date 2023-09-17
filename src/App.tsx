@@ -21,26 +21,34 @@ function App() {
           <table className="w-full border border-slate-300 rounded">
             <tr>
               <td className="p-2 border">Asetmu</td>
-              <td className="p-2 border">
-                Rp.{result.assets.toLocaleString()}
+              <td className="p-2 border flex justify-between">
+                <span>Rp. </span>
+                {result.assets.toLocaleString().split(".")[0]}
               </td>
             </tr>
             <tr>
               <td className="p-2 border">Return</td>
-              <td className="p-2 border">
-                Rp.{result.totalReturn.toLocaleString()}
+              <td className="p-2 border flex justify-between">
+                <span>Rp. </span>
+                {result.totalReturn.toLocaleString().split(".")[0]}
               </td>
             </tr>
             <tr>
               <td className="p-2 border">Dengan Profit</td>
-              <td className="p-2 border">
-                Rp.{result.profit.toLocaleString()}
+              <td className="p-2 border flex justify-between">
+                <span>Rp. </span>
+                {result.profit.toLocaleString().split(".")[0]}
               </td>
             </tr>
             <tr>
-              <td className="p-2 border">Persentase</td>
-              <td className="p-2 border">
-                {(result.percentage / 12).toFixed(2)}% per bulan
+              <td className="p-2 border">Gaji Bulanan</td>
+              <td className="p-2 border flex justify-between">
+                <span>Rp. </span>
+                {
+                  ((result.totalReturn * result.percentage) / 12 / 100)
+                    .toLocaleString()
+                    .split(".")[0]
+                }
               </td>
             </tr>
           </table>
